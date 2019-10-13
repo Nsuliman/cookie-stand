@@ -96,7 +96,7 @@ console.log(' Amount Of Cookies for Seattle : ', AmountOfCookieS); /// to calcul
 //Seattle.SeatArry.push( SeattleRNC,AmountOfCookieS);   /// The array are for Random number customers & cookies amount 
 
 
-for (var i = 6; i <= 12; i++) {
+for (var i = 6; i <12; i++) {
     //Random Number per customer for seattle 
     var SeattleRNC = Seattle.randomInRange(23, 65);
     var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
