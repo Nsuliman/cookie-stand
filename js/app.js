@@ -1,23 +1,32 @@
 'use strict';
 
+var SeatArry = [];
+var GlobalTotal = 0;
+var StingGlobal = '' ;
+var ToyArry = [];
+var DubaiArry = [];
+var ParisArry = [];
+var LimaArry = [];
 
 function Locations(min,max,avgCookies) {
 
-    this.MaxCust = max;
-    this.MinCust = min;
-    this.AvgCookieSale = avgCookies;
+    this.maxCust = max;
+    this.minCust = min;
+    this.avgCookieSale = avgCookies;
     this.randNum = 0;
     this.randomInRange();
-
 }
 
 Locations.prototype.randomInRange = function ()
 {
 
-    var range = this.max - this.min;
-    this.randNum = Math.ceil((Math.random() * range) + this.min );   
+    var range = this.maxCust - this.minCust;
+    // console.log('range',range);
+    this.randNum = Math.ceil((Math.random() * range) + this.minCust );   
 
 }
+
+
 ////////////////  5 Objects ///////////////////////////////////
 
 var seattle = new Locations(23,65,6.3);
@@ -37,8 +46,81 @@ console.log(' Lima object : ' , Lima);
 
 ////////////////////////// Random Numbers ////////////////////
 
-tokyo.randomInRange();
-console.log(seattle.randNum);
+seattle.randomInRange();
+console.log(' ranNum' , seattle.randNum);
+
+//////////////////////////////////////////////////////////////
+
+for (var i = 6; i <12; i++) {
+    //Random Number per customer for seattle
+    seattle.randomInRange();
+    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
+    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieS;
+    SeatArry.push(Output);
+}
+if (i == 12) {
+    seattle.randomInRange();
+    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
+    var Output = i + 'pm :' + AmountOfCookieS + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieS;
+    SeatArry.push(Output);
+}
+
+for (var i = 1; i <= 7; i++) {
+    seattle.randomInRange();
+    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
+    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieS;
+    SeatArry.push(Output);
+}
+
+StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
+SeatArry.push(StingGlobal);
+console.log(' Total cookies per day in Seattle', GlobalTotal);
+console.log('Seattle Array = ', SeatArry);
+
+
+/////////////////////////////////////////////////////////////////////////
+
+var GlobalTotal = 0;
+for (var i = 6; i < 12; i++) {
+
+    //Random Number per customer for Tokyo
+    tokyo.randomInRange(3, 24);
+    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
+    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieT;
+    ToyArry.push(Output);
+}
+if (i == 12) {
+    tokyo.randomInRange(3, 24);
+    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
+    var Output = i + 'pm :' + AmountOfCookieT + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieT;
+    ToyArry.push(Output);
+}
+
+for (var i = 1; i <= 7; i++) {
+    tokyo.randomInRange(3, 24);
+    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
+    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
+    GlobalTotal = GlobalTotal + AmountOfCookieT;
+    ToyArry.push(Output);
+}
+StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
+ToyArry.push(StingGlobal);
+console.log('Tokyo Array = ', ToyArry);
+console.log(' Total cookies per day in Tokyo', GlobalTotal);
+/////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 //var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
 
