@@ -1,532 +1,142 @@
 'use strict';
 
-var SeatArry = [];
-var GlobalTotal = 0;
-var StingGlobal = '' ;
-var ToyArry = [];
-var DubaiArry = [];
-var ParisArry = [];
-var LimaArry = [];
 
-function Locations(min,max,avgCookies) {
+/////////////////////// Constructor Functions ///////////////
+function Locations(nameoflocation, min, max, avgCookieSale) {
 
+    this.name = nameoflocation;
     this.maxCust = max;
     this.minCust = min;
-    this.avgCookieSale = avgCookies;
-    this.randNum = 0;
-    this.randomInRange();
-}
+    this.avgCookieSale = avgCookieSale;
+    this.totalCookies = 0;
+    this.genArray = [];  // cookies number per hour 
 
-Locations.prototype.randomInRange = function ()
-{
+}
+///////////////////// The Objects //////////////////////////
+var seattle = new Locations('seattle', 23, 65, 6.3);
+console.log(' seattle object : ', seattle);
+
+var tokyo = new Locations('tokyo', 3, 24, 1.2);
+console.log(' tokyo object : ', tokyo);
+
+var dubai = new Locations('dubai', 11, 38, 3.7);
+console.log(' dubai object : ', dubai);
+
+var paris = new Locations('paris', 20, 38, 2.3);
+console.log(' paris object : ', paris);
+
+var lima = new Locations('lima', 2, 16, 4.6);
+console.log(' Lima object : ', lima);
+
+
+///////////////////////// First coloum anf row in table ////////////
+var locationsNames = [seattle, tokyo, dubai, paris, lima];
+var hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
+var totalCookiesOfLocations = [];
+////////////////// Calculate the Random number /////////////////////
+Locations.prototype.randomInRange = function () {
 
     var range = this.maxCust - this.minCust;
-    // console.log('range',range);
-    this.randNum = Math.ceil((Math.random() * range) + this.minCust );   
+    //console.log('range',range);
+    var randNum = Math.ceil((Math.random() * range) + this.minCust);
 
+    return randNum;
 }
+//var na =seattle.randomInRange();
+//console.log('na',na);
 
+//////////////////////////// Calculate cookies per hour //////////////
+Locations.prototype.cookiesValues = function () {
 
-////////////////  5 Objects ///////////////////////////////////
-
-var seattle = new Locations(23,65,6.3);
-console.log(' seattle object : ' , seattle);
-
-var tokyo = new Locations(3,24,1.2);
-console.log(' tokyo object : ' , tokyo);
-
-var dubai = new Locations(11,38,3.7);
-console.log(' dubai object : ' , dubai);
-
-var paris = new Locations(20,38,2.3);
-console.log(' paris object : ' , paris);
-
-var Lima = new Locations(2,16,4.6);
-console.log(' Lima object : ' , Lima);
-
-////////////////////////// Random Numbers ////////////////////
-
-seattle.randomInRange();
-console.log(' ranNum' , seattle.randNum);
-
-//////////////////////////////////////////////////////////////
-
-for (var i = 6; i <12; i++) {
-    //Random Number per customer for seattle
-    seattle.randomInRange();
-    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
-}
-if (i == 12) {
-    seattle.randomInRange();
-    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
-}
-
-for (var i = 1; i <= 7; i++) {
-    seattle.randomInRange();
-    var AmountOfCookieS = Math.ceil(seattle.randNum * seattle.avgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
-}
-
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-SeatArry.push(StingGlobal);
-console.log(' Total cookies per day in Seattle', GlobalTotal);
-console.log('Seattle Array = ', SeatArry);
-
-
-/////////////////////////////////////////////////////////////////////////
-
-var GlobalTotal = 0;
-for (var i = 6; i < 12; i++) {
-
-    //Random Number per customer for Tokyo
-    tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-if (i == 12) {
-    tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-
-for (var i = 1; i <= 7; i++) {
-    tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(tokyo.randNum * tokyo.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-ToyArry.push(StingGlobal);
-console.log('Tokyo Array = ', ToyArry);
-console.log(' Total cookies per day in Tokyo', GlobalTotal);
-/////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-//var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
-
-// var arrayoflocations = [
-//     [23,65,6.3],
-//     [3,24,1.2],
-//     [11,38,3.7],
-//     [20,38,2.3],
-//     [2,16,4.6]
-// ];
-// console.log(' The Locations array = ' , arrayoflocations);
-
-
-// var seattle = new Locations (arrayoflocations[0][0],arrayoflocations[0][1],arrayoflocations[0][2]); 
-// console.log(' seattle object : ' , seattle);
-// var tokyo = new Locations (arrayoflocations[1][0],arrayoflocations[0][1],arrayoflocations[0][2]); 
-// console.log(' tokyo object : ' , tokyo);
-// var dubai = new Locations (arrayoflocations[2][0],arrayoflocations[0][1],arrayoflocations[0][2]); 
-// console.log(' dubai object : ' , dubai);
-// var paris = new Locations (arrayoflocations[3][0],arrayoflocations[0][1],arrayoflocations[0][2]); 
-// console.log(' paris object : ' , paris);
-// var Lima = new Locations (arrayoflocations[4][0],arrayoflocations[0][1],arrayoflocations[0][2]); 
-// console.log(' Lima object : ' , Lima);
-
-
-// for (var i = 0;i<arrayoflocations.length;i++)
-// {
-//     for ( var j =0; j<3;j++)
-//     {
-
-//     }
-
-// }
-
-
-
-/*
-
-//--------------------- LAB 6 --------------------------------------------
-var SeatArry = [];
-var GlobalTotal = 0;
-var StingGlobal = '' ;
-var ToyArry = [];
-var DubaiArry = [];
-var ParisArry = [];
-var LimaArry = [];
-
-var Seattle = {
-
-    MinCust: 23,
-    MaxCust: 65,
-    AvgCookieSale: 6.3,
-    randomInRange: function (min, max) {
-
-        var range = max - min;
-        var rand = (Math.random() * range) + min;  // smth between 0-20
-        return Math.ceil(rand);
+    for (var i = 0; i < 14; i++) {
+        var SeattleRNC = this.randomInRange(this.minCust, this.maxCust);
+        //console.log( ' Seattle RNC' , SeattleRNC);
+        var AmountOfCookieS = SeattleRNC * (this.avgCookieSale);
+        var output = Math.ceil(AmountOfCookieS);
+        //console.log( ' AmountOfCookieS ' , output);
+        this.genArray.push(output);
+        this.totalCookies = this.totalCookies + output;
     }
-
-}; // End of Seattle object
-
-console.log(' Seattle Object ', Seattle);
-
-var Tokyo = {
-
-    MinCust: 3,
-    MaxCust: 24,
-    AvgCookieSale: 1.2,
-    randomInRange: function (min, max) {
-
-        var range = max - min;
-        var rand = (Math.random() * range) + min;  // smth between 0-20
-        return Math.ceil(rand);
-    }
-};// End of Tokyo object
-
-console.log(' Tokyo Object ', Tokyo);
-
-var Dubai = {
-
-    MinCust: 11,
-    MaxCust: 38,
-    AvgCookieSale: 3.7,
-    randomInRange: function (min, max) {
-
-        var range = max - min;
-        var rand = (Math.random() * range) + min;  // smth between 0-20
-        return Math.ceil(rand);
-    }
-};// End of Dubai object
-
-console.log(' Dubai Object ', Dubai);
-
-var Paris = {
-
-    MinCust: 20,
-    MaxCust: 38,
-    AvgCookieSale: 2.3,
-    randomInRange: function (min, max) {
-
-        var range = max - min;
-        var rand = (Math.random() * range) + min;  // smth between 0-20
-        return Math.ceil(rand);
-    }
-};// End of Paris object
-
-console.log(' Paris Object ', Paris);
-
-var Lima = {
-
-    MinCust: 2,
-    MaxCust: 16,
-    AvgCookieSale: 4.6,
-    randomInRange: function (min, max) {
-
-        var range = max - min;
-        var rand = (Math.random() * range) + min;  // smth between 0-20
-        return Math.ceil(rand);
-    }
-};// End of Lima object
-
-console.log(' Lima Object ', Lima);
-
-
-///-------------------------------------------------------------------------------
-
-var SeattleRNC = Seattle.randomInRange(23, 65);
-console.log(' Seattle RNC = ', SeattleRNC);
-//The average amount of cookies for Seattle
-var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
-console.log(' Amount Of Cookies for Seattle : ', AmountOfCookieS); /// to calculate the avg amount of cookie per hour
-//Seattle.SeatArry.push( SeattleRNC,AmountOfCookieS);   /// The array are for Random number customers & cookies amount
-
-
-for (var i = 6; i <12; i++) {
-    //Random Number per customer for seattle
-    var SeattleRNC = Seattle.randomInRange(23, 65);
-    var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
 }
-if (i == 12) {
-    var SeattleRNC = Seattle.randomInRange(23, 65);
-    var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
+//console.log('ff',this.genArray);
+
+//////////////calculate the hourly cookies for each object ///////////
+for (var i = 0; i < locationsNames.length; i++) {
+    this.locationsNames[i].cookiesValues();
 }
 
-for (var i = 1; i <= 7; i++) {
-    var SeattleRNC = Seattle.randomInRange(23, 65);
-    var AmountOfCookieS = Math.ceil(SeattleRNC * Seattle.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieS + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieS;
-    SeatArry.push(Output);
+
+////////////////////////////////// Show up the Table ///////////////
+
+
+var contArea = document.getElementById('content-area'); // Choose the place i would like to show my table inside it 
+
+var table = document.createElement('table');   // tell the broswer we need to create a table & push it 
+contArea.appendChild(table);
+
+var tabRow = document.createElement('tr');  // we need to put the table row  
+table.appendChild(tabRow);
+
+var HeadTab = document.createElement('th'); /// put the heading of the table 
+tabRow.appendChild(HeadTab);
+
+HeadTab.textContent = ' ';  /// to make a space above the table  
+
+for (var i = 0; i < hours.length; i++)                        /// insert the hours 
+{
+    var rowheadfirst = document.createElement('th');
+    tabRow.appendChild(rowheadfirst);
+    rowheadfirst.textContent = hours[i];
 }
 
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-SeatArry.push(StingGlobal);
-console.log(' Total cookies per day in Seattle', GlobalTotal);
-console.log('Seattle Array = ', SeatArry);
+var totalCookiesLoc = document.createElement('th');  /// put the last header coloum in the table 
+tabRow.appendChild(totalCookiesLoc);
+totalCookiesLoc.textContent = ' Daily Location Total ';
 
-///-------------------------------------------------------------------------------
+Locations.prototype.table = function () {
+    var rowData = document.createElement('tr');
+    table.appendChild(rowData);
 
-
-var TokyoRNC = Tokyo.randomInRange(23, 65);
-console.log(' Tokyo RNC = ', TokyoRNC);
-//The average amount of cookies for Tokyo
-var AmountOfCookieT = Math.ceil(TokyoRNC * Tokyo.AvgCookieSale);
-console.log(' Amount Of Cookies for Tokyo : ', AmountOfCookieT); /// to calculate the avg amount of cookie per hour
-//Tokyo.ToyArry.push( TokyoRNC,AmountOfCookieT);   /// The array are for Random number customers & cookies amount
-
-var GlobalTotal = 0;
-for (var i = 6; i < 12; i++) {
-
-    //Random Number per customer for Tokyo
-    var TokyoRNC = Tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(TokyoRNC * Tokyo.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-if (i == 12) {
-    var TokyoRNC = Tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(TokyoRNC * Tokyo.AvgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-
-for (var i = 1; i <= 7; i++) {
-    var TokyoRNC = Tokyo.randomInRange(3, 24);
-    var AmountOfCookieT = Math.ceil(TokyoRNC * Tokyo.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieT + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieT;
-    ToyArry.push(Output);
-}
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-ToyArry.push(StingGlobal);
-console.log('Tokyo Array = ', ToyArry);
-console.log(' Total cookies per day in Tokyo', GlobalTotal);
-
-///-------------------------------------------------------------------------------
+    var locNames = document.createElement('th');            /// insert the objects names 
+    rowData.appendChild(locNames);
+    locNames.textContent = this.name;
 
 
-var DubaiRNC = Dubai.randomInRange(23, 65);
-console.log(' Dubai RNC = ', DubaiRNC);
-//The average amount of cookies for Dubai
-var AmountOfCookieD = Math.ceil(DubaiRNC * Dubai.AvgCookieSale);
-console.log(' Amount Of Cookies for Dubai : ', AmountOfCookieD); /// to calculate the avg amount of cookie per hour
-
-//Dubai.DubaiArry.push(DubaiRNC, AmountOfCookieD);   /// The array are for Random number customers & cookies amount
-var GlobalTotal = 0;
-for (var i = 6; i < 12; i++) {
-
-    //Random Number per customer for Dubai
-    var DubaiRNC = Dubai.randomInRange(11, 38);
-    var AmountOfCookieD = Math.ceil(DubaiRNC * Dubai.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieD + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieD;
-    DubaiArry.push(Output);
-}
-if (i == 12) {
-    var DubaiRNC = Dubai.randomInRange(11, 38);
-    var AmountOfCookieD = Math.ceil(DubaiRNC * Dubai.AvgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieD + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieD;
-    DubaiArry.push(Output);
-}
-
-for (var i = 1; i <= 7; i++) {
-    var DubaiRNC = Dubai.randomInRange(11, 38);
-    var AmountOfCookieD = Math.ceil(DubaiRNC * Dubai.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieD + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieD;
-    DubaiArry.push(Output);
-}
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-DubaiArry.push(StingGlobal);
-console.log('Dubai Array = ', DubaiArry);
-console.log(' Total cookies per day in Dubai', GlobalTotal);
-
-///-------------------------------------------------------------------------------
-
-
-var ParisRNC = Paris.randomInRange(20, 38);
-console.log(' Paris RNC =  ', ParisRNC);
-
-//The average amount of cookies for Paris
-var AmountOfCookieP = Math.ceil(ParisRNC * Paris.AvgCookieSale);
-console.log(' Amount Of Cookies for Paris : ', AmountOfCookieP); /// to calculate the avg amount of cookie per hour
-
-//Paris.ParisArry.push(ParisRNC, AmountOfCookieP);   /// The array are for Random number customers & cookies amount
-var GlobalTotal = 0;
-for (var i = 6; i < 12; i++) {
-    //Random Number per customer for Paris
-    var ParisRNC = Paris.randomInRange(20, 38);
-    var AmountOfCookieP = Math.ceil(ParisRNC * Paris.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieP + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieP;
-    ParisArry.push(Output);
-}
-if (i == 12) {
-    var ParisRNC = Paris.randomInRange(20, 38);
-    var AmountOfCookieP = Math.ceil(ParisRNC * Paris.AvgCookieSale);
-    var Output = i + 'pm :' + AmountOfCookieP + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieP;
-    ParisArry.push(Output);
-}
-
-for (var i = 1; i <= 7; i++) {
-    var ParisRNC = Paris.randomInRange(20, 38);
-    var AmountOfCookieP = Math.ceil(ParisRNC * Paris.AvgCookieSale);
-    var Output = i + 'am :' + AmountOfCookieP + ' cookies .';
-    GlobalTotal = GlobalTotal + AmountOfCookieP;
-    ParisArry.push(Output);
-}
-StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-ParisArry.push(StingGlobal);
-console.log('Paris Array = ', ParisArry);
-console.log(' Total cookies per day in Paris', GlobalTotal);
-
-///-------------------------------------------------------------------------------
-
-
-var LimaRNC = Lima.randomInRange(23, 65);
-console.log(' Lima RNC = ', LimaRNC);
-
-//The average amount of cookies for Lima
-var AmountOfCookieL = Math.ceil(LimaRNC * Lima.AvgCookieSale);
-console.log(' Amount Of Cookies for Lima : ', AmountOfCookieL); /// to calculate the avg amount of cookie per hour
-
-//Lima.LimaArry.push(LimaRNC, AmountOfCookieL);   /// The array are for Random number customers & cookies amount
-
-var GlobalTotal = 0;
-for (var i = 6; i < 12; i++)
+    for (var i = 0; i < this.genArray.length; i++)          /// insert the cookies values
     {
-        //Random Number per customer for Lima
-        var LimaRNC = Lima.randomInRange(2, 16);
-        var AmountOfCookieL = Math.ceil(LimaRNC * Lima.AvgCookieSale);
-        var Output = i + 'am :' + AmountOfCookieL + ' cookies .';
-        GlobalTotal = GlobalTotal + AmountOfCookieL;
-        LimaArry.push(Output);
+        var cookieHourly = document.createElement('td');
+        rowData.appendChild(cookieHourly);
+        cookieHourly.textContent = this.genArray[i];
     }
-    if (i == 12) {
-        var LimaRNC = Lima.randomInRange(2, 16);
-        var AmountOfCookieL = Math.ceil(LimaRNC * Lima.AvgCookieSale);
-        var Output = i + 'pm :' + AmountOfCookieL + ' cookies .';
-        GlobalTotal = GlobalTotal + AmountOfCookieL;
-        LimaArry.push(Output);
+    var total = document.createElement('td');
+    rowData.appendChild(total);
+    total.textContent = this.totalCookies;
+};
+
+for (var i = 0; i < locationsNames.length; i++) {
+    this.locationsNames[i].table();
+}
+
+var rowData = document.createElement('tr');
+    table.appendChild(rowData);
+    var total = document.createElement('td');
+    rowData.appendChild(total);
+    total.textContent = 'Totals';
+    for (var i = 0; i < 14; i++) {
+        var total = document.createElement('td');
+        rowData.appendChild(total);
+
+total.textContent = seattle.genArray[i]+tokyo.genArray[i]+dubai.genArray[i]+paris.genArray[i]+lima.genArray[i];
     }
+    var total = document.createElement('td');
+    rowData.appendChild(total);
 
-    for (var i = 1; i <= 7; i++) {
-        var LimaRNC = Lima.randomInRange(2, 16);
-        var AmountOfCookieL = Math.ceil(LimaRNC * Lima.AvgCookieSale);
-        var Output = i + 'am :' + AmountOfCookieL + ' cookies .';
-        GlobalTotal = GlobalTotal + AmountOfCookieL;
-        LimaArry.push(Output);
-    }
+total.textContent =seattle.totalCookies+tokyo.totalCookies+dubai.totalCookies+paris.totalCookies+lima.totalCookies;
 
-    StingGlobal = ' Total : ' + GlobalTotal + ' Cookies ';
-    LimaArry.push(StingGlobal);
-    console.log('Lima Array = ', LimaArry);
-    console.log(' Total cookies per day in Lima', GlobalTotal);
 
-///-------------------------------------------------------------------------------
 
-///---------------------------------To Print for Seattle--------------------------
 
-    var SeattlePargh = document.createElement('p');
-    SeattlePargh.textContent = 'Seattle'; /// bring the object by Name
-    var contentArea = document.getElementById('content-area');
-    contentArea.appendChild(SeattlePargh);
 
-    var ulElements = document.createElement('ul');
-    contentArea.appendChild(ulElements);
 
-    for (var i = 0; i <= 14; i++) {
-        var liElements = document.createElement('li');
-        var li = document.createElement('li');
-        liElements.textContent = SeatArry[i];
-        ulElements.appendChild(liElements);
-    }
 
-    ///---------------------------------To Print for Tokyo--------------------------
-    var TokyoPargh = document.createElement('p');
-    TokyoPargh.textContent = 'Tokyo'; /// bring the object by Name
-    var contentArea = document.getElementById('content-area');
-    contentArea.appendChild(TokyoPargh);
 
-    var ulElements = document.createElement('ul');
-    contentArea.appendChild(ulElements);
-
-    for (var i = 0; i <= 14; i++) {
-        var liElements = document.createElement('li');
-        var li = document.createElement('li');
-        liElements.textContent = ToyArry[i];
-        ulElements.appendChild(liElements);
-    }
-
-    ///---------------------------------To Print for Dubai--------------------------
-    var DubaiPargh = document.createElement('p');
-    DubaiPargh.textContent = 'Dubai'; /// bring the object by Name
-    var contentArea = document.getElementById('content-area');
-    contentArea.appendChild(DubaiPargh);
-
-    var ulElements = document.createElement('ul');
-    contentArea.appendChild(ulElements);
-
-    for (var i = 0; i <= 14; i++) {
-        var liElements = document.createElement('li');
-        var li = document.createElement('li');
-        liElements.textContent = DubaiArry[i];
-        ulElements.appendChild(liElements);
-    }
-
-    ///---------------------------------To Print for Paris--------------------------
-    var ParisPargh = document.createElement('p');
-    ParisPargh.textContent = 'Paris'; /// bring the object by Name
-    var contentArea = document.getElementById('content-area');
-    contentArea.appendChild(ParisPargh);
-
-    var ulElements = document.createElement('ul');
-    contentArea.appendChild(ulElements);
-
-    for (var i = 0; i <= 14; i++) {
-        var liElements = document.createElement('li');
-        var li = document.createElement('li');
-        liElements.textContent = ParisArry[i];
-        ulElements.appendChild(liElements);
-    }
-
-    ///---------------------------------To Print for Lima--------------------------
-    var LimaPargh = document.createElement('p');
-    LimaPargh.textContent = 'Lima'; /// bring the object by Name
-    var contentArea = document.getElementById('content-area');
-    contentArea.appendChild(LimaPargh);
-
-    var ulElements = document.createElement('ul');
-    contentArea.appendChild(ulElements);
-
-    for (var i = 0; i <= 14; i++) {
-        var liElements = document.createElement('li');
-        var li = document.createElement('li');
-        liElements.textContent = LimaArry[i];
-        ulElements.appendChild(liElements);
-    }
-*/
