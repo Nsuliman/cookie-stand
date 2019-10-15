@@ -74,6 +74,7 @@ var contArea = document.getElementById('content-area'); // Choose the place i wo
 var table = document.createElement('table');   // tell the broswer we need to create a table & push it 
 contArea.appendChild(table);
 
+
 var tabRow = document.createElement('tr');  // we need to put the table row  
 table.appendChild(tabRow);
 
@@ -122,7 +123,7 @@ var rowData = document.createElement('tr');
     var total = document.createElement('td');
     rowData.appendChild(total);
     total.textContent = 'Totals';
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i <=13; i++) {
         var total = document.createElement('td');
         rowData.appendChild(total);
 
