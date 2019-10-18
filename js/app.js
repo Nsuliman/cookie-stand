@@ -1,6 +1,5 @@
 'use strict';
 
-
 /////////////////////// Constructor Functions ///////////////
 function Locations(nameoflocation, min, max, avgCookieSale) {
 
