@@ -12,6 +12,7 @@ header {
   background-position: center;
   width: 100%;
   border: 3px solid rgb(177, 99, 11);
+  border-radius: 10px;
 }
 
 nav {
@@ -56,17 +57,18 @@ main img{
   text-align: center;  
   float: left;
   padding-right: 10px;
-  
-
 }
 main p {
 
   border: 3px solid rgb(177, 99, 11);
+  color: rgb(32, 17, 2);
   margin-top: 30px;
   overflow: scroll;
   height: 388px;
   line-height: 25px;
   font-family: sans-serif;
+  border-radius: 10px;
+
 }
 
 main pre img{
@@ -76,8 +78,31 @@ padding: 0px;
 height: 200px;
 }
 
-main pre{
+.info{
   border: 3px solid rgb(177, 99, 11);
   margin: 0px auto;
   height: 200px;
+  color: rgb(32, 17, 2);
+}
+
+#opening-hours{
+
+  color:rgb(227, 228, 169);
+  border: 3px solid rgb(177, 99, 11);
+  height: 250px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 25px;
+  padding-top: 0px;
+  padding: 10px;
+}
+
+#locations {
+
+  border: 3px solid rgb(177, 99, 11);
+
+}
+
+pre h2 a {
+
+  color: blue;
 }
