@@ -156,10 +156,11 @@ button {
   transition: 350ms;
   cursor: pointer;
   border-radius: 30px;
-float: right;
+  float: right;
+
 }
 
 button:hover {
-  background: green;
+  background: yellow;
 }
 
