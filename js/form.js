@@ -3,6 +3,9 @@
 
 var megaTotal = 0;
 var newarray = [];
+var rowData1;
+var rowData2;
+var sum = 0;
 /////////////////////// Constructor Functions ///////////////
 function Locations(nameoflocation, min, max, avgCookieSale) {
 
@@ -31,13 +34,36 @@ shopF.addEventListener('submit', function (event) {
     console.log('avg ', avgCookieSale);
 
     var newLoc = new Locations(nameofloc, minCust, maxCust, avgCookieSale);
-    newLoc.cookiesValues();         // calculate the cookies for the new object 
-    console.log(newLoc);
+        newLoc.cookiesValues();         // calculate the cookies for the new object 
+        console.log(newLoc);
+        addshop (newLoc);
+        newarray.push(nameofloc);
+        console.log('new locaaaaation' , newarray.length);
 
-    table.removeChild(rowData);   // remove last row in the table to addd the new object 
+        // if (newarray==newarray.length)
+        // {
+
+        // var newLoc1 = new Locations(nameofloc, minCust, maxCust, avgCookieSale);
+        // newLoc1.cookiesValues();         // calculate the cookies for the new object 
+        // console.log(newLoc1);
+        // addshop2 (newLoc1);
+        // }
+
+        
+   
+}); // end of event function 
+
+
+function addshop (newLoc)
+{
+    var rowCount = table.rows.length;
+    console.log('table rooooow' , rowCount);
+    table.deleteRow(rowCount-1);
+    
+    //table.removeChild(rowData);   // remove last row in the table to addd the new object 
     newLoc.table();                 // add the new object to the table 
 
-    var rowData1 = document.createElement('tr');
+    rowData1 = document.createElement('tr');
     table.appendChild(rowData1);
     var total2 = document.createElement('td');
     rowData1.appendChild(total2);
@@ -46,18 +72,45 @@ shopF.addEventListener('submit', function (event) {
     for (var i = 0; i <= 13; i++) {
         var total2 = document.createElement('td');
         rowData1.appendChild(total2);
-        total2.textContent = seattle.genArray[i] + tokyo.genArray[i] + dubai.genArray[i] + paris.genArray[i] + lima.genArray[i] + newLoc.genArray[i];
+        total2.textContent = seattle.genArray[i] + tokyo.genArray[i] + dubai.genArray[i] + paris.genArray[i] + lima.genArray[i] + newLoc.genArray[i]  ;
+        
     }
 
     var total2 = document.createElement('td');
     rowData1.appendChild(total2);
 
-    total2.textContent = seattle.totalCookies + tokyo.totalCookies + dubai.totalCookies + paris.totalCookies + lima.totalCookies + newLoc.totalCookies;
+    total2.textContent = seattle.totalCookies + tokyo.totalCookies + dubai.totalCookies + paris.totalCookies + lima.totalCookies  + newLoc.totalCookies;
 
+}
 
-}); // end of event function 
+// function addshop2 (newLoc1)
+// {
+//     var rowCount = table.rows.length;
+//     console.log('table rooooow' , rowCount);
+//     table.deleteRow(rowCount-1);
+    
+//     //table.removeChild(rowData);   // remove last row in the table to addd the new object 
+//     newLoc.table();                 // add the new object to the table 
 
-console.log(' location', locationsNames);
+//     rowData1 = document.createElement('tr');
+//     table.appendChild(rowData1);
+//     var total2 = document.createElement('td');
+//     rowData1.appendChild(total2);
+//     total2.textContent = 'Totals';
+
+//     for (var i = 0; i <= 13; i++) {
+//         var total2 = document.createElement('td');
+//         rowData1.appendChild(total2);
+//         total2.textContent = seattle.genArray[i] + tokyo.genArray[i] + dubai.genArray[i] + paris.genArray[i] + lima.genArray[i] + newLoc.genArray[i] +newLoc1.genArray[i] ;
+        
+//     }
+
+//     var total2 = document.createElement('td');
+//     rowData1.appendChild(total2);
+
+//     total2.textContent = seattle.totalCookies + tokyo.totalCookies + dubai.totalCookies + paris.totalCookies + lima.totalCookies  + newLoc.totalCookies + newLoc1.totalCookies;
+
+// }
 ///////////////////// The Objects //////////////////////////
 
 var seattle = new Locations('seattle', 23, 65, 6.3);
@@ -79,7 +132,7 @@ console.log(' Lima object : ', lima);
 var locationsNames = [seattle, tokyo, dubai, paris, lima];
 var hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 var totalCookiesOfLocations = [];
-var FooterArray = [];
+
 
 ////////////////// Calculate the Random number /////////////////////
 Locations.prototype.randomInRange = function () {
