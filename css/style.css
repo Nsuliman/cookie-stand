@@ -12,6 +12,7 @@
     border-style: groove;
     border: 3px solid rgb(177, 99, 11);
     padding: 20px;
+    font-family: 'Fjalla One', sans-serif;
 }
     table, th,td {
     text-align: center;
